@@ -1,27 +1,25 @@
 function todoList(todos) {
   // Write your code here...
 let content = document.getElementById("content");
-let unorderlistTag = document.createElement("ul");
-content.appendChild(unorderlistTag);
+let ul = document.createElement("ul");
+content.appendChild(ul);
 
-todos.forEach(task => {
-  let listTag = document.createElement("li");
-  unorderlistTag.appendChild(listTag);
-  listTag.innerText = task.todo;
+todos.forEach(task => {     
+  let li = document.createElement("li");
+  ul.appendChild(li);
+  li.innerText = task.todo;
 
-  listTag.addEventListener("click", makeLine);
-  function makeLine(){
-    listTag.style.textDecorationLine = "line-through"
-  }
-
-  // listTag.addEventListener("click", removeLine);  
-  // function removeLine(){
-  //   listTag.style.textDecorationLine = "none"
-  // }
-  
+   
+    li.addEventListener("click",function(){
+      if(li.style.textDecorationLine === "line-through"){
+        li.style.textDecorationLine = "";
+      }else{
+        li.style.textDecorationLine = "line-through";
+      }
+      
+    }); 
 });
 }
-
 const todos = [
   {todo: "wash the dishes"}, 
   {todo: "walk the dog"}, 
