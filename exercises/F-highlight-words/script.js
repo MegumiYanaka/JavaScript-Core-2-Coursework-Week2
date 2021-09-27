@@ -25,7 +25,7 @@ wordParagraph.forEach((element,i) =>{
      }else if(select.value==="blue"){
      span.style.backgroundColor = "blue";
      }else{
-     span.style.backgroundColor = "white";
+     span.style.backgroundColor = "";//I didn't know this " "
      }
    });
  });

@@ -1,32 +1,34 @@
 function populateTodoList(todos) {
   let list = document.getElementById("todo-list");
+  // Write your code to create todo list elements with 
+  // completed and delete buttons here,
+  //  all todos should display inside the "todo-list" element.
+  todos.forEach((todo) => {
+    let itemToDo = document.createElement("li");
+    let button = document.createElement("span");
+    let doneButtun = document.createElement("i");
+    let deleteButtun = document.createElement("i");
 
-  list.replaceChildren([]); 
+    list.appendChild(itemToDo).className = 
+    "list-group-item d-flex justify-content-between align-items-center";
+    itemToDo.innerText = todo.task;
+    itemToDo.appendChild(button).className = "badge bg-primary rounded-pill";
+    button.appendChild(doneButtun).className = "fa fa-check";
+    button.appendChild(deleteButtun).className = "fa fa-trash";
+   
+    doneButtun.addEventListener("click",function(){
+      if(itemToDo.style.textDecorationLine === "line-through"){
+        itemToDo.style.textDecorationLine = "";
+      }else{
+        itemToDo.style.textDecorationLine = "line-through";
+      }
+    }); 
+   
+    deleteButtun.addEventListener("click",function(){
+      itemToDo.remove();
+    })   
+  });
 
-  // Write your code to create todo list elements with completed and delete buttons here, all todos should display inside the "todo-list" element.
-todos.forEach(todo => {
-  let listTag = document.createElement("li");
-  list.appendChild(listTag);
-  listTag.className = "list-group-item d-flex justify-content-between align-items-center";
-  listTag.innerText = todo.task
-
-  let spanTag = document.createElement("span");
-  listTag.appendChild(spanTag);
-  spanTag.className = "badge bg-primary rounded-pill";
-  
-  let completeButton = document.createElement("i");
-  spanTag.appendChild(completeButton );
-  completeButton .className = "fa fa-check";
-  addEventListener("click", toggleTask);
-  function toggleTask(){
-    toggleComplete(todo);
-  }
-  
-  
-  let deleteButton = document.createElement("i");
-  spanTag.appendChild(deleteButton);
-  deleteButton.className = "fa fa-trash";
-});
 }
 
 // These are the same todos that currently display in the HTML
@@ -38,32 +40,19 @@ let todos = [
 
 populateTodoList(todos);
 
-// This function will take the value of the input field and add 
-//it as a new todo to the bottom of the todo list. 
-//These new todos will need the completed and delete buttons adding like normal.
+// This function will take the value of the input field and 
+// add it as a new todo to the bottom of the todo list.
+//  These new todos will need the completed and delete buttons adding like normal.
 function addNewTodo(event) {
-  // The code below prevents the page from refreshing when we click the 'Add Todo' button.
+  // The code below prevents the page from refreshing
+  //  when we click the 'Add Todo' button.
   event.preventDefault();
-  let elem = event.currentElement;
-  let input = document.getElementById("todoInput");
-  todos.push({task: input.value, completed:false });
-  populateTodoList(todos);
-  input.value = "";
-  // Write your code here... and remember to reset the input field to be 
-  //blank after creating a todo!
-
+  // Write your code here... and 
+  // remember to reset the input field to be blank after creating a todo!
 
 }
-// Advanced challenge: Write a fucntion that checks the todos in the todo list
-// and deletes the completed ones (we can check which ones are completed 
-//by seeing if they have the line-through styling applied or not).
+
+// Advanced challenge: Write a fucntion that checks the todos in the todo list and deletes the completed ones (we can check which ones are completed by seeing if they have the line-through styling applied or not).
 function deleteAllCompletedTodos() {
   // Write your code here...
 }
-
-function toggleComplete(todo){
-  todo.completed =! todo.completed 
-  populateTodoList(todos);
-}
-
-
