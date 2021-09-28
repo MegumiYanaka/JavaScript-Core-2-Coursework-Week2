@@ -1,8 +1,8 @@
 function populateTodoList(todos) {
   let list = document.getElementById("todo-list");
-  // Write your code to create todo list elements with 
-  // completed and delete buttons here,
-  //  all todos should display inside the "todo-list" element.
+    // Write your code to create todo list elements with 
+    // completed and delete buttons here,
+    //  all todos should display inside the "todo-list" element.
   list.replaceChildren([]);
   todos.forEach((todo,index) => {
     let itemToDo = document.createElement("li");
@@ -54,7 +54,6 @@ function addNewTodo(event) {
   // The code below prevents the page from refreshing
   //  when we click the 'Add Todo' button.
  
-
   event.preventDefault();
   // Write your code here... and 
   // remember to reset the input field to be blank after creating a todo!
@@ -70,8 +69,8 @@ function addNewTodo(event) {
 
 function deleteAllCompletedTodos() {
   // Write your code here...
-//  todos.filter(task => task.completed);
- todos = todos.filter(task => task.completed === false);
- populateTodoList(todos);
+  // todos.filter(task => task.completed);
+  todos = todos.filter(task => task.completed === false);
+  populateTodoList(todos);
 }
 
